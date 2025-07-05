@@ -1,0 +1,13 @@
+ja:
+  activerecode:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        image: ユーザー画像
+        name: ユーザー名
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード確認
+        introduction: 紹介文
+        likes: いいね数 
