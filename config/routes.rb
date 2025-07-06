@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root 'homes#top'
+  get 'search', to:'searches#search'
 
   resource :account, only: [:show]
   resource :profile, only: [:show, :edit, :update]
