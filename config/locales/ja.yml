@@ -1,13 +1,23 @@
 ja:
   activerecode:
     models:
-      user: ユーザー
+      user: "ユーザー"
+      item: "商品"
     attributes:
       user:
-        image: ユーザー画像
-        name: ユーザー名
-        email: Eメール
-        password: パスワード
-        password_confirmation: パスワード確認
-        introduction: 紹介文
-        likes: いいね数 
+        image: "ユーザー画像"
+        name: "ユーザー名"
+        email: "Eメール"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        introduction: "紹介文"
+        likes: "いいね数"
+      item:
+        title: "タイトル" 
+        image: "商品画像"
+        price: "値段"
+        category: "カテゴリー"
+        introduction: "商品紹介文"
+        onSale: "販売状況"
+        interest: "気になる"
+        user_id: "ユーザーID"

@@ -1,0 +1,39 @@
+<h1>出品商品一覧</h1>
+
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <div>
+      <table class="table">
+        <tr>
+          <th>タイトル</th>
+          <td><%=link_to item.title, item %></td>
+        </tr>
+        <tr>
+          <th>商品画像</th>
+          <td><%= image_tag item.image.url %></td>
+        </tr>
+        <tr>
+          <th>値段</th>
+          <td><%= item.price %></td>
+        </tr>
+        <tr>
+          <th>販売状況</th>
+          <td>
+            <% if item.onSale? %>
+              <p>販売中</p>
+            <% else %>
+              <p>売り切れ</p>
+            <% end %>  
+          </td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+
+<% else %>
+
+<p>出品している商品はありません</p>
+
+<% end %>
+
+<%= link_to "トップページへ戻る", root_path %>

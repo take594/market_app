@@ -20,13 +20,23 @@ ja:
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: 名前
+        name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+      item:
+        title: "タイトル" 
+        image: "商品画像"
+        price: "値段"
+        category: "カテゴリー"
+        introduction: "商品紹介文"
+        onSale: "販売状況"
+        interest: "気になる"
+        user_id: "ユーザーID"
     models:
-      user: "ユーザ"
+      user: "ユーザー"
+      item: "商品"
   devise:
     confirmations:
       new:

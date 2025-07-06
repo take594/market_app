@@ -4,5 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
+  has_many :items, dependent: :destroy
   validates :name, presence: true
+
+  def own?(object)
+    object.user_id == self.id
+  end
 end

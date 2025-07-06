@@ -19,6 +19,8 @@
                   <%= current_user.name %>
                 </button>
                 <ul class="dropdown-menu">
+                  <li><%= link_to "商品を出品する", new_item_path, class:"dropdown-item" %><li>
+                  <li><%= link_to "出品した商品一覧", items_path, class:"dropdown-item" %></li>
                   <li><%= link_to "アカウント情報", account_path, class:"dropdown-item" %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
                 </ul>

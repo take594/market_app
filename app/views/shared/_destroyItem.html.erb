@@ -1,0 +1,46 @@
+<% if current_user.present? %>
+  <% if current_user.own?(item) %>
+    <% if item.onSale? %>
+      <button type="button" class="btn btn-danger" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+      出品の取り消し
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">削除確認画面</h5>
+              <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <label>商品の出品を取り消しますか？</label>
+            <table class="table">
+              <tr>
+                <th>商品画像</th>
+                <td>
+                  <%= image_tag item.image.url %>
+                </td>
+              </tr>
+              <tr>
+                <th>タイトル</th>
+                <td><%= item.title %></td>
+              </tr>
+              <tr>
+                <th>値段</th>
+                <td><%= item.price %></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">閉じる</button>
+            <%= link_to "出品を取り消す", item_path(item), method: :delete, class:"btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <% end %>
+  <% else %>
+  <% end %>
+<% else %>
+<% end %>
+

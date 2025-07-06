@@ -1,0 +1,51 @@
+<h1>出品中の商品の詳細</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>商品画像</th>
+    <td><%= image_tag @item.image.url %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @item.title %></td>
+  </tr>
+  <tr>
+    <th>気になる数</th>
+    <td><%= @item.interest %></td>
+  </tr>
+  <tr>
+    <th>値段</th>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <th>商品紹介文</th>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>販売状況</th>
+    <td>
+    <% if @item.onSale? %>
+      <p>販売中</p>
+    <% else %>
+      <p>売り切れ</p>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>出品者</th>
+    <td><%= @item.user.name %></td>
+  </tr>
+</table>
+
+<div>
+  <%= link_to "戻る", :back %>
+</div>
+
+<% if current_user.present? %>
+  <% if current_user.own?(@item) %>
+    <%= link_to "出品内容を編集する", edit_item_path(@item) %><br>
+    <%= render "shared/destroyItem", item: @item %>
+  <% else %>
+  <% end %>
+<% else %>
+<% end %>
