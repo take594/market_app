@@ -1,0 +1,29 @@
+<h1>商品の購入履歴</h1>
+
+<% if @purchases.present? %>
+  <% @purchases.each do |purchase| %>
+    <div>
+      <table class="table">
+        <tr>
+          <th>タイトル</th>
+          <td><%=link_to purchase.item.title, purchase %></td>
+        </tr>
+        <tr>
+          <th>商品画像</th>
+          <td><%= image_tag purchase.item.image.url %></td>
+        </tr>
+        <tr>
+          <th>値段</th>
+          <td><%= purchase.item.price %></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+
+<% else %>
+
+<p>購入した商品はありません</p>
+
+<% end %>
+
+<%= link_to "トップページへ戻る", root_path %>

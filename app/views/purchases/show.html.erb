@@ -1,0 +1,42 @@
+<h1>購入した商品の詳細</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>商品画像</th>
+    <td><%= image_tag @item.image.url %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @item.title %></td>
+  </tr>
+  <tr>
+    <th>気になる数</th>
+    <td><%= @item.interest %></td>
+  </tr>
+  <tr>
+    <th>値段</th>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <th>商品紹介文</th>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>出品者</th>
+    <td><%= @item.user.name %></td>
+  </tr>
+</table>
+
+<% if purchase.arrived? %>
+<% else %>
+  <div>
+    <%= link_to "商品が届いたことを報告する", edit_purchase_path(@purchase), class: "btn btn-primary" %>
+  </div>
+  <div>
+    <%= render "shared/destroyPurchase", purchase: @purchase %>
+  <div>
+<% end %>
+
+<div>
+  <%= link_to "トップページへ戻る", root_path %>
+</div> 

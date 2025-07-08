@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_many :purchases, dependent: :destroy
+  has_many :interesteds, dependent: :destroy
   mount_uploader :image, ImageUploader
   validates :title, presence: true
   validates :image, presence: true
@@ -8,5 +10,9 @@ class Item < ApplicationRecord
 
   def own?(object)
     object.user_id == self.id
+  end
+
+  def interested_by?(user)
+    interesteds.exists?(user_id: user.id)
   end
 end

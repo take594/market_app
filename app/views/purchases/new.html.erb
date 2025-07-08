@@ -1,0 +1,45 @@
+<h1>商品を購入する</h1>
+
+<%= render 'shared/error_messages', obj: @purchase %>
+
+<table class="table table-bordered">
+  <tr>
+    <th>商品画像</th>
+    <td><%= image_tag @item.image.url %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @item.title %></td>
+  </tr>
+  <tr>
+    <th>気になる数</th>
+    <td><%= @item.interest %></td>
+  </tr>
+  <tr>
+    <th>値段</th>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <th>商品紹介文</th>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>出品者</th>
+    <td><%= @item.user.name %></td>
+  </tr>
+</table>
+
+<%= form_with model: @purchase do |f| %>
+  <%= f.hidden_field :arrived, value: false %>
+  <%= f.hidden_field :rate, value: 0 %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+
+  <div>
+    <%= f.submit "商品を購入する", class:"btn btn-danger" %>
+  </div>
+
+<% end %>
+
+<div>
+  <%= link_to "トップページへ戻る", root_path %>
+</div>
