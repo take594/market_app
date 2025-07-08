@@ -1,6 +1,6 @@
 <h1>購入した商品の詳細</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered w-50">
   <tr>
     <th>商品画像</th>
     <td><%= image_tag @item.image.url %></td>
@@ -27,7 +27,7 @@
   </tr>
 </table>
 
-<% if purchase.arrived? %>
+<% if @purchase.arrived? %>
 <% else %>
   <div>
     <%= link_to "商品が届いたことを報告する", edit_purchase_path(@purchase), class: "btn btn-primary" %>
@@ -38,5 +38,5 @@
 <% end %>
 
 <div>
-  <%= link_to "トップページへ戻る", root_path %>
+  <%= link_to "トップページへ戻る", root_path, class:"btn btn-success" %>
 </div> 

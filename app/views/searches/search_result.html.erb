@@ -1,32 +1,36 @@
 <h1>検索結果</h1>
 <% if @items.present? %>
   <p class="text-warning"><%=@items.count%>件の商品が見つかりました</p>
+  <div>
+    <%= sort_link(@q, :interest, "人気順に並び替える") %>
+  </div>
   <% @items.each do |item| %>
-    <div>
-      <table class="table">
-        <tr>
-          <th>販売状況</th>
-          <td>
-            <% if item.onSale? %>
-              <p>販売中</p>
-            <% else %>
-              <p>売り切れ</p>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>商品画像</th>
-          <td><%= image_tag item.image.url %></td>
-        </tr>
-        <tr>
-          <th>タイトル</th>
-          <td><%=link_to item.title, item %></td>
-        </tr>
-        <tr>
-          <th>値段</th>
-          <td><%= item.price %></td>
-        </tr>
-      </table>
+    <div class="card my-1" style="width: 18rem;">
+      <%= image_tag item.image.url, class:"card-image-top" %>
+      <div class="card-body">
+        <h5><%= item.title %></h5>
+        <table>
+          <tr>
+            <th>気になる数</th>
+            <td><%= item.interest %></td>
+          </tr>
+          <tr>
+            <th>値段</th>
+            <td><%= item.price %>円</td>
+          </tr>
+          <tr>
+            <th>販売状況</th>
+            <td>
+              <% if item.onSale? %>
+                販売中
+              <% else %>
+                売り切れ
+              <% end %>  
+            </td>
+          </tr>
+        </table>
+        <div><%= link_to "詳細へ", item, class: "btn btn-primary" %></div>
+      </div>
     </div>
   <% end %>
 <% else %>
@@ -35,4 +39,4 @@
 
 <% end %>
 
-<%= link_to "トップページへ", root_path %>
+<%= link_to "トップページへ", root_path, class:"btn btn-success" %>

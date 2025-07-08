@@ -4,8 +4,8 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <span>MarketApp</span>
-        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div id="navbarRightAlignExample">
+          <ul class="navbar-nav ms-auto mb-2 mb-0">
             <li class="nav-item">
               <% if current_user.image.present? %>
                 <%= image_tag current_user.image.thumb.url %>
@@ -38,8 +38,8 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <span>MarketApp</span>
-        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div id="navbarRightAlignExample">
+          <ul class="navbar-nav ms-auto mb-2 mb-0">
             <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class:"btn btn-primary" %></li>
             <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-warning" %></li>
           </ul>
@@ -50,4 +50,8 @@
 
 <% end %>
 
-<%= render 'shared/search' %>
+<div class="position-relative mt-3 ms-5">
+  <div class="position-absolute top-0">
+    <%= render 'shared/search' %>
+  </div>
+</div>

@@ -1,22 +1,25 @@
 <h1>出品中の商品の詳細</h1>
 
-<% if @item.interested_by?(current_user) %>
-  <p>
-    <%= link_to item_interesteds_path(@item), method: :delete do %>
-      ★<br>
-      気になる数<%= @item.interesteds.count %>
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to item_interesteds_path(@item), method: :item do %>
-      ☆<br>
-      気になる数<%= @item.interesteds.count %>
-    <% end %>
-  </p>
+<% if current_user.own?(@item) %>
+<% else %>
+  <% if @item.interested_by?(current_user) %>
+    <p>
+      <%= link_to item_interesteds_path(@item), method: :delete do %>
+        ★<br>
+        気になる数<%= @item.interesteds.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to item_interesteds_path(@item), method: :item do %>
+        ☆<br>
+        気になる数<%= @item.interesteds.count %>
+      <% end %>
+    </p>
+  <% end %>
 <% end %>
 
-<table class="table table-bordered">
+<table class="table table-bordered w-50">
   <tr>
     <th>商品画像</th>
     <td><%= image_tag @item.image.url %></td>
@@ -55,17 +58,17 @@
 
 <% if current_user.present? %>
   <% if current_user.own?(@item) %>
-    <%= link_to "出品内容を編集する", edit_item_path(@item) %><br>
+    <%= link_to "出品内容を編集する", edit_item_path(@item), class: "btn btn-primary" %>
     <%= render "shared/destroyItem", item: @item %>
   <% else %>
     <% if @item.onSale? %>
       <div>
-        <%= link_to "商品を購入する", new_purchase_path(@item) %>
+        <%= link_to "商品を購入する", new_purchase_path(@item), class: "btn btn-warning" %>
       </div>
     <% else %>
     <% end %>
-  <% end %>
+  <% end %><br>
 <% else %>
 <% end %>
 
-<%= link_to "トップページへ戻る", root_path %>
+<%= link_to "トップページへ戻る", root_path, class:"btn btn-success" %>
