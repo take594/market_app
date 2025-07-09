@@ -1,31 +1,37 @@
-<h1>商品の購入履歴</h1>
+<h1 class="text-success">商品の購入履歴</h1>
 
 <% if @purchases.present? %>
-  <% @purchases.each do |purchase| %>
-    <div class="card" style="width: 18rem;">
-      <%= image_tag purchase.item.image.url, class:"card-image-top" %>
-      <div class="card-body">
-        <h5><%= purchase.item.title %></h5>
-        <table>
-          <tr>
-            <th>値段</th>
-            <td><%= purchase.item.price %>円</td>
-          </tr>
-          <tr>
-            <th>販売状況</th>
-            <td>
-              <% if purchase.item.onSale? %>
-                販売中
-              <% else %>
-                売り切れ
-              <% end %>  
-            </td>
-          </tr>
-        </table>
-        <div><%= link_to "詳細へ", purchase, class: "btn btn-primary" %></div>
+  <div class="row row-cols-md-3">
+    <% @purchases.each do |purchase| %>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag purchase.item.image.url, class:"card-image-top" %>
+          <div class="card-body">
+            <h5><%= purchase.item.title %></h5>
+            <table>
+              <tr>
+                <th>値段</th>
+                <td><%= purchase.item.price %>円</td>
+              </tr>
+              <tr>
+                <th>販売状況</th>
+                <td>
+                  <% if purchase.item.onSale? %>
+                    販売中
+                  <% else %>
+                    売り切れ
+                  <% end %>  
+                </td>
+              </tr>
+            </table>
+            <div><%= link_to "詳細へ", purchase, class: "btn btn-primary" %></div>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <%= paginate @purchases, theme: 'bootstrap-5' %>
 
 <% else %>
 

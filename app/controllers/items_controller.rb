@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = current_user.items
+    @items = current_user.items.page(params[:page]).per(9)
   end
 
   def new
@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @sold_item = Item.find_by(category: @item.category, onSale: false)
   end
 
   def edit

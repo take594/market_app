@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = current_user.purchases
+    @purchases = current_user.purchases.page(params[:page]).per(9)
   end
 
   def new

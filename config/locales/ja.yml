@@ -3,6 +3,8 @@ ja:
     models:
       user: "ユーザー"
       item: "商品"
+      purchase: "購入"
+      interested: "気になる"
     attributes:
       user:
         image: "ユーザー画像"
@@ -21,3 +23,18 @@ ja:
         onSale: "販売状況"
         interest: "気になる"
         user_id: "ユーザーID"
+      purchase:
+        arrived: "到着状況"
+        rate: "評価"
+        user_id: "ユーザーID"
+        item_id: "商品ID"
+      interested:
+        user_id: "ユーザーID"
+        item_id: "商品ID"
+views:
+  pagination:
+    first: "&laquo; 最初"
+    last: "最後&raquo;"
+    previous: "&lsaquo; 前"
+    next: "次&rsaquo;"
+    truncate: "..."        

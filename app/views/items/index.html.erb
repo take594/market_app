@@ -1,31 +1,36 @@
-<h1>出品商品一覧</h1>
+<h1 class="text-success">出品商品一覧</h1>
 
 <% if @items.present? %>
-  <% @items.each do |item| %>
-    <div class="card" style="width: 18rem;">
-      <%= image_tag item.image.url, class:"card-image-top" %>
-      <div class="card-body">
-        <h5><%= item.title %></h5>
-        <table>
-          <tr>
-            <th>値段</th>
-            <td><%= item.price %>円</td>
-          </tr>
-          <tr>
-            <th>販売状況</th>
-            <td>
-              <% if item.onSale? %>
-                <p>販売中</p>
-              <% else %>
-                <p>売り切れ</p>
-              <% end %>  
-            </td>
-          </tr>
-        </table>
-        <div><%= link_to "詳細へ", item, class: "btn btn-primary" %></div>
+  <div class="row row-cols-md-3">
+    <% @items.each do |item| %>
+      <div class="col">
+        <div class="card my-1" style="width: 18rem;">
+          <%= image_tag item.image.url, class:"card-image-top" %>
+          <div class="card-body">
+            <h5><%= item.title %></h5>
+            <table>
+              <tr>
+                <th>値段</th>
+                <td><%= item.price %>円</td>
+              </tr>
+              <tr>
+                <th>販売状況</th>
+                <td>
+                  <% if item.onSale? %>
+                    販売中
+                  <% else %>
+                    売り切れ
+                  <% end %>  
+                </td>
+              </tr>
+            </table>
+            <div><%= link_to "詳細へ", item, class: "btn btn-primary" %></div>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>  
+  <%= paginate @items, theme: 'bootstrap-5' %>
 
 <% else %>
 
