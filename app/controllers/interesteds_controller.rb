@@ -1,9 +1,11 @@
 class InterestedsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     @item = Item.find(params[:item_id])
     current_user.interesteds.create(item_id: @item.id)
-    @interested_number = @item.interest + 1
-    @item.update(interest: @interested_number)
+    @item.update(interest: @item.interest + 1)
     redirect_to item_path(@item)
 
   end
@@ -11,8 +13,7 @@ class InterestedsController < ApplicationController
   def destroy
     @item = Item.find(params[:item_id])
     @interested = current_user.interesteds.find_by(item_id: @item.id)
-    @interested_number = @item.interest - 1
-    @item.update(interest: @interested_number)
+    @item.update(interest: @item.interest - 1)
     @interested.destroy
     redirect_to item_path(@item)
   end

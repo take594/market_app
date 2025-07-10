@@ -1,4 +1,7 @@
 class PurchasesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
     @purchases = current_user.purchases.page(params[:page]).per(9)
   end
@@ -34,6 +37,7 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.find(params[:id])
     if @purchase.update(arrived_params)
       flash[:notice] = "商品の到着状況を報告しました"
+      #購入した商品の出品者の評価を更新
       @user = User.find(@purchase.item.user_id)
       @addRate = @user.likes + @purchase.rate
       @user.update(likes: @addRate)
