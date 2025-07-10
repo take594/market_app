@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <%= f.label :email, "Eメール" %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-25" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control w-25" %>
     <% if @minimum_password_length %>
       <br />
       <em>最低で<%= @minimum_password_length %>文字必要です</em>
@@ -28,12 +28,12 @@
 
   <div class="form-group">
     <%= f.label :password_confirmation, "パスワード確認用" %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control w-25" %>
   </div>
 
   <div class="form-group">
     <%= f.label :current_password, "現在のパスワード" %><br>
-    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control w-25" %>
   </div>
 
   <div class="actions">
