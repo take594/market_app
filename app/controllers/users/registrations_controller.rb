@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-   @user = User.new
+    @user = User.new
   end
 
   # POST /resource
@@ -30,7 +30,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = current_user
-    if @user.update(user_params2)
+    if @user.update_with_password(user_params2)
+      bypass_sign_in(@user)
       flash[:notice] = "アカウント情報を変更しました"
       redirect_to root_path
     else
@@ -58,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params2
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
   end
   # protected
 
