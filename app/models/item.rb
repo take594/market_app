@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 1}
   validates :category, presence: true
 
+  def own?(object)
+    object.user_id == self.id
+  end
+
   def interested_by?(user)
     interesteds.exists?(user_id: user.id)
   end
