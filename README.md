@@ -5,7 +5,7 @@
 ###### 商品の相場を見える化し、売り買いが活発な市場を作り出すフリマアプリ
 
 ## 2. サービス画像
-<img src="https://github.com/take594/market_app/raw/main/app/assets/images/readme_image.png" height="320px">
+<img src="https://github.com/take594/market_app/raw/main/app/assets/images/readme_image.png" height="600px">
 
 ## 3. サービスのURL
 
