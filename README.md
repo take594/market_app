@@ -71,4 +71,4 @@
 ###### ・SQLite（開発時）→ PostgeSQL（デプロイ）
 
 ## 8. ER図
-![ER図](https://github.com/take594/market_app/raw/main/app/assets/images/er_image.png)
+![ER図](https://github.com/take594/market_app/raw/main/app/assets/images/er_image.jpg)
