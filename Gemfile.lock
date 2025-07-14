@@ -190,6 +190,7 @@ GEM
     nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.9)
     psych (3.3.4)
     public_suffix (6.0.2)
     puma (5.6.9)
@@ -358,6 +359,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.3)
   mini_magick
+  pg
   psych (~> 3.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -368,7 +370,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring (= 4.2.1)
-  sqlite3 (~> 1.4)
+  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
