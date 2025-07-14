@@ -1,0 +1,33 @@
+<div class="border bg-primary-subtle p-3">
+  <%= search_form_for @q, url:search_path, method: :get do |f| %>
+    <p class="text-success fs-4 ps-5"> 
+      商品を検索
+    </p>
+    <div>
+      <%= f.label :title, "タイトル" %>
+      <%= f.search_field :title_cont, class:"form-control w-50 d-inline-block" %>
+    </div>
+    <div>
+      <%= f.label :price, "値段" %></span>
+      <%= f.number_field :price_gteq, class:"form-control w-25 d-inline-block" %><span>以上～</span>
+      <%= f.number_field :price_lt, class:"form-control w-25 d-inline-block" %><span>未満</span>
+    </div>
+    <div>
+      <%= f.label :category, "カテゴリー" %>
+      <%= f.search_field :category_cont, class:"form-control w-25 d-inline-block" %>
+    </div>
+    <div>
+      <%= f.label :onSale %>
+      <%= f.radio_button :onSale_eq, true, class:"form-check-input" %>販売中
+      <%= f.radio_button :onSale_eq, false, class:"form-check-input" %>売り切れ
+    </div>
+    <div>
+      <%= f.label :interest, "気になる数" %>
+      <%= f.number_field :interest_gteq, class:"form-control w-25 d-inline-block" %>
+    </div>
+
+    <div>
+      <%= f.submit "検索する", class:"btn btn-primary mt-2" %>
+    </div>
+  <% end %>
+</div>

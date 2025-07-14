@@ -1,0 +1,35 @@
+<h1 class="text-success">プロフィール</h1>
+
+<div>
+  <%= link_to "プロフィール編集", edit_profile_path, class:"btn btn-info" %>
+  <%= link_to "アカウント情報", account_path, class:"btn btn-success" %>
+</div>
+
+<table class="table table-bordered w-50">
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <% if current_user.image.present? %>
+        <%= image_tag @user.image.thumb.url %>
+      <% else %>
+        <%= image_tag 'default.png' %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>いいね数</th>
+    <td><%= @user.likes %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @user.introduction %></td>
+  </tr>
+</table>
+
+<div>
+  <%= link_to "トップページへ戻る", root_path, class:"btn btn-success" %>
+</div>

@@ -1,0 +1,54 @@
+<h1>検索結果</h1>
+<% if @items.present? %>
+  <p class="text-warning"><%=@items.count%>件の商品が見つかりました</p>
+  <div>
+    <%= sort_link(@q, :interest, "人気順に並び替える") %>
+  </div>
+  <div class="row row-cols-md-3">
+    <% @items_page.each do |item| %>
+      <div class="col">
+        <div class="card my-1" style="width: 18rem;">
+          <%= image_tag item.image.url, class:"card-image-top" %>
+          <div class="card-body">
+            <h5><%= item.title %></h5>
+            <table>
+              <tr>
+                <th>気になる数</th>
+                <td><%= item.interest %></td>
+              </tr>
+              <tr>
+                <th>値段</th>
+                <td><%= item.price %>円</td>
+              </tr>
+              <tr>
+                <th>販売状況</th>
+                <td>
+                  <% if item.onSale? %>
+                    販売中
+                  <% else %>
+                    売り切れ
+                  <% end %>  
+                </td>
+              </tr>
+            </table>
+            <div>
+              <% if current_user.present? %>
+                <%= link_to "詳細へ", item, class: "btn btn-primary" %>
+              <% else %>
+                詳細はログインユーザーのみ確認可能です
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%= paginate @items_page, theme: 'bootstrap-5' %>
+
+<% else %>
+
+  <p>検索結果はありません</p>
+
+<% end %>
+
+<%= link_to "トップページへ", root_path, class:"btn btn-success" %>

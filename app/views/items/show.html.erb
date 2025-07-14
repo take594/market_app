@@ -1,0 +1,102 @@
+<h1 class="text-success">出品中の商品の詳細</h1>
+
+<% if current_user.own?(@item) %>
+<% else %>
+  <% if @item.interested_by?(current_user) %>
+    <p>
+      <%= link_to item_interesteds_path(@item), method: :delete do %>
+        ★<br>
+        気になる数<%= @item.interesteds.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to item_interesteds_path(@item), method: :item do %>
+        ☆<br>
+        気になる数<%= @item.interesteds.count %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
+<table class="table table-bordered w-50">
+  <tr>
+    <th>商品画像</th>
+    <td><%= image_tag @item.image.url %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @item.title %></td>
+  </tr>
+  <tr>
+    <th>気になる数</th>
+    <td><%= @item.interest %></td>
+  </tr>
+  <tr>
+    <th>値段</th>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <th>商品紹介文</th>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>販売状況</th>
+    <td>
+    <% if @item.onSale? %>
+      <p>販売中</p>
+    <% else %>
+      <p>売り切れ</p>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>出品者</th>
+    <td><%= @item.user.name %></td>
+  </tr>
+  <tr>
+    <th>出品日時</th>
+    <td><%= @item.created_at.to_s(:datetime_jp)%></td>
+  </tr>
+</table>
+
+<% if current_user.present? %>
+  <% if current_user.own?(@item) %>
+    <% if @item.onSale? %>
+      <% if @sold_item.present? %>
+        <div>
+          <p class="fs-3 fw-bold text-info">その出品、値段を見直せば売れるかも?</p>
+          <p>～同じカテゴリーで売れた商品はこちら!～</p>
+          <div class="card my-1" style="width: 18rem;">
+            <%= image_tag @sold_item.image.url, class:"card-image-top" %>
+            <div class="card-body">
+              <h5><%= @sold_item.title %></h5>
+              <table>
+                <tr>
+                  <th>値段</th>
+                  <td><%= @sold_item.price %>円</td>
+                </tr>
+              </table>
+              <div><%= link_to "詳細へ", @sold_item, class: "btn btn-primary" %></div>
+            </div>
+          </div> 
+        </div>
+      <% else %>
+      <% end %>
+      <%= link_to "出品内容を編集する", edit_item_path(@item), class: "btn btn-primary" %>
+      <%= render "shared/destroyItem", item: @item %>
+    <% else %>
+      <p>この商品は購入されました</p>
+    <% end %>
+  <% else %>
+    <% if @item.onSale? %>
+      <div>
+        <%= link_to "商品を購入する", new_purchase_path(@item), class: "btn btn-warning" %>
+      </div>
+    <% else %>
+    <% end %>
+  <% end %><br>
+<% else %>
+<% end %>
+
+<%= link_to "トップページへ戻る", root_path, class:"btn btn-success" %>
