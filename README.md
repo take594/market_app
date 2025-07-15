@@ -9,7 +9,7 @@
 
 ## 3. サービスのURL
 
-######https://uretekure.onrender.com/
+https://uretekure.onrender.com/
 
 ## 4. サービスの概要
 
