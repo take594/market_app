@@ -25,3 +25,4 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  url: <%= ENV['postgresql://uretekure_db_user:DvxMWCCpsJVeBOCLMY9oqIgobS1eneF1@dpg-d1qu3rje5dus73e1abc0-a/uretekure_db'] %>
