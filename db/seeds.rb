@@ -1,5 +1,5 @@
 5.times do |n|
-  User.create(
+  User.create!(
     name: "ユーザー#{n}",
     email: "user#{n}@mail.com",
     password: "password#{n}",
@@ -9,7 +9,7 @@
 end
 
 15.times do |n|
-  Item.create(
+  Item.create!(
     image: File.open(Rails.root.join("db/seed_images/sample.jpg")),
     title: "アイテム#{n}",
     price: 1000 + n,
@@ -21,7 +21,7 @@ end
   )
 end
 15.times do |n|
-  Item.create(
+  Item.create!(
     image: File.open(Rails.root.join("db/seed_images/sample2.jpg")),
     title: "すごいアイテム#{n}",
     price: 10000 + n,
@@ -34,7 +34,7 @@ end
 end
 
 10.times do |n|
-  Purchase.create(
+  Purchase.create!(
     arrived: false,
     rate: 0,
     user_id: 3,
