@@ -20,3 +20,6 @@ services:
         - ./
     migrations:
       run: bundle exec rails db:migrate && bundle exec rails db:seed
+    envVars:
+      keys: RAILS_MASTER_KEY
+      value: a205e44087e6078c6973e31b6f974a07
