@@ -11,7 +11,7 @@ services:
       - key: RAILS_ENV
         value: production
       - key: RAILS_MASTER_KEY
-        value: YOUR_MASTER_KEY
+        value: a205e44087e6078c6973e31b6f974a07
     autoDeploy: true
     plan: free
     region: oregon
@@ -20,6 +20,3 @@ services:
         - ./
     migrations:
       run: bundle exec rails db:migrate && bundle exec rails db:seed
-    envVars:
-      keys: RAILS_MASTER_KEY
-      value: a205e44087e6078c6973e31b6f974a07
