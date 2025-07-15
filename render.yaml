@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: uretekure
+    env: ruby
+    buildCommand: |
+      bundle install
+      yarn install
+      bundle exec rake assets:precompile
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        value: YOUR_MASTER_KEY
+    autoDeploy: true
+    plan: free
+    region: oregon
+    buildFilter:
+      paths:
+        - ./
+    migrations:
+      run: bundle exec rails db:migrate && bundle exec rails db:seed
