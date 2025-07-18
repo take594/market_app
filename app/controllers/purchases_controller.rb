@@ -26,7 +26,6 @@ class PurchasesController < ApplicationController
 
   def show
     @purchase = Purchase.find(params[:id])
-    @item = @purchase.item
   end
 
   def edit
@@ -49,10 +48,9 @@ class PurchasesController < ApplicationController
 
   def destroy
     @purchase = Purchase.find(params[:id])
-    @item = @purchase.item
     @purchase.destroy
     flash[:notice] = "購入を取り消しました"
-    @item.update(onSale: true)
+    @purchase.item.update(onSale: true)
     redirect_to purchases_path
   end
   
