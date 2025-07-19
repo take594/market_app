@@ -55,7 +55,7 @@ RSpec.describe 'ユーザー認証機能', type: :system do
 
   describe 'ログアウト' do
     it 'ログイン後にログアウトできる' do
-      login_as(user, scope: :user)
+      sign_in(user)
       visit root_path
 
       click_button user.name
@@ -69,7 +69,7 @@ RSpec.describe 'ユーザー認証機能', type: :system do
 
   describe 'アカウント編集' do
     it '有効な情報で変更できる' do
-      login_as(user, scope: :user)
+      sign_in(user)
       visit edit_user_registration_path
 
       fill_in 'Eメール', with: 'test@example.com'
@@ -83,7 +83,7 @@ RSpec.describe 'ユーザー認証機能', type: :system do
     end
 
     it '無効な情報では変更できない' do
-      login_as(user, scope: :user)
+      sign_in(user)
       visit edit_user_registration_path
 
       fill_in 'Eメール', with: 'invalid'
@@ -99,7 +99,7 @@ RSpec.describe 'ユーザー認証機能', type: :system do
 
   describe 'プロフィール編集' do
     it 'プロフィールを編集できる' do
-      login_as(user, scope: :user)
+      sign_in(user)
       visit edit_profile_path
 
       attach_file 'プロフィール画像', Rails.root.join('spec/fixtures/sample.jpg')
