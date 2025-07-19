@@ -11,7 +11,7 @@ RSpec.describe '商品購入機能', type: :system do
 
   context '購入ページで' do
     it 'ログインしたユーザーが商品を購入できる' do
-      login_as(buyer, scope: :user)
+      sign_in(buyer)
       visit new_purchase_path(item)
 
       expect(page).to have_content(item.title)
@@ -23,7 +23,7 @@ RSpec.describe '商品購入機能', type: :system do
       expect(Purchase.last.item.onSale).to eq(false)
     end
     it '購入者が商品の到着報告と評価を行える' do
-      login_as(buyer, scope: :user)
+      sign_in(buyer)
       purchase = Purchase.create(user: buyer, item: item)
       item_user = item.user
       item_user.update(likes: 5)

@@ -11,7 +11,7 @@
     </p>
     <% else %>
     <p>
-      <%= link_to item_interesteds_path(@item), method: :item do %>
+      <%= link_to item_interesteds_path(@item), method: :post do %>
         ☆<br>
         気になる数<%= @item.interesteds.count %>
       <% end %>
