@@ -80,3 +80,8 @@ https://uretekure.onrender.com/
 
 ## 8. ER図
 ![ER図](https://github.com/take594/market_app/raw/main/app/assets/images/er_image.jpg)
+
+## 9. 更新履歴
+
+###### 7/19 アプリにCI/CD環境を導入!
+
