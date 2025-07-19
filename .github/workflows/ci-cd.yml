@@ -49,9 +49,14 @@ jobs:
       - name: Yarn install
         run: yarn install --frozen-lockfile
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
       - name: Precompile webpacker
         run: bin/rails webpacker:compile
-
+        
       - name: Run RSpec
         run: bundle exec rspec
 
