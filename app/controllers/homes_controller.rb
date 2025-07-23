@@ -17,4 +17,9 @@ class HomesController < ApplicationController
     flash[:notice] = 'ゲストユーザーとしてログインしました'
     redirect_to root_path 
   end
+
+  def favorite
+    favorite = Interested.where(user_id: current_user.id).order(created_at: :desc).pluck(:item_id)
+    @favorite_items = Item.find(favorite)
+  end
 end

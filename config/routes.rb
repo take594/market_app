@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
+  get '/homes/favorite', to: 'homes#favorite'
+
   resource :account, only: [:show]
   resource :profile, only: [:show, :edit, :update]
 
