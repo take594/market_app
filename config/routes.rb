@@ -3,8 +3,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+
   root 'homes#top'
   get 'search', to:'searches#search'
+
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   resource :account, only: [:show]
   resource :profile, only: [:show, :edit, :update]
