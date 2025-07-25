@@ -1,6 +1,14 @@
 class HomesController < ApplicationController
   before_action :set_search
   def top
+    city = 'Tokyo' 
+    response = WeatherService.new(city).fetch_weather
+
+    if response.success?
+      @weather = response.parsed_response
+    else
+      @weather = nil
+    end
   end
 
   def set_search

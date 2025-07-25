@@ -57,6 +57,21 @@
 <div class="wrapper d-flex flex-column min-vh-100">
   <main class="flex-grow-1 position-relative my-3 ms-5">
     <div class="position-relative top-0">
+      <h4 class="text-info">今日の天気は？</h4>
+
+      <% if @weather %>
+        <div class="mb-4">
+          <div class="bg-success-subtle">
+            <span class="text-info fs-4 mx-4"><%= @weather["name"] %></span>
+            <span><strong>天気:</strong> <%= @weather["weather"][0]["description"] %></span>
+            <span><strong>気温:</strong> <%= @weather["main"]["temp"] %> ℃</span>
+            <span><strong>湿度:</strong> <%= @weather["main"]["humidity"] %> %</span>
+            <img src="http://openweathermap.org/img/wn/<%= @weather["weather"][0]["icon"] %>@2x.png" alt="天気アイコン">
+          </div>
+        </div>
+      <% else %>
+        <p class="text-info mb-4">天気情報を取得できませんでした。</p>
+      <% end %>
       <%= render 'shared/search' %>
       <div class="mt-5 ms-5">
         <%= render 'shared/explain' %>
