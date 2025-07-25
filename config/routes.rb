@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   root 'homes#top'
+  get '/top', to: 'homes#top'
   get 'search', to:'searches#search'
 
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'

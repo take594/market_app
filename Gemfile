@@ -41,6 +41,10 @@ gem 'ransack'
 
 gem 'kaminari'
 
+gem 'httparty'
+
+gem 'dotenv-rails'
+
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
 group :development, :test do
