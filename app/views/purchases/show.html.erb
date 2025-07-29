@@ -32,9 +32,12 @@
   <div>
     <%= link_to "商品が届いたことを報告する", edit_purchase_path(@purchase), class: "btn btn-primary" %>
   </div>
-  <div>
-    <%= render "shared/destroyPurchase", purchase: @purchase %>
-  <div>
+  <% if @purchase.item.deliveryStatus==false %>
+    <div>
+      <%= render "shared/destroyPurchase", purchase: @purchase %>
+    <div>
+  <% else %>
+  <% end %>
 <% end %>
 
 <div>
