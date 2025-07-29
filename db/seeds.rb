@@ -19,12 +19,13 @@ end
     introduction: "テストです",
     onSale: true,
     interest: n,
+    deliveryStatus: false,
     user_id: 1
   )
 end
 15.times do |n|
   Item.create!(
-    id: n,
+    id: n+15,
     image: File.open(Rails.root.join("db/seed_images/sample2.jpg")),
     title: "すごいアイテム#{n}",
     price: 10000 + n,
@@ -32,6 +33,7 @@ end
     introduction: "テストです2",
     onSale: true,
     interest: n + 10,
+    deliveryStatus: false,
     user_id: 2
   )
 end

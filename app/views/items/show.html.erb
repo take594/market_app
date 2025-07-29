@@ -87,6 +87,10 @@
       <%= render "shared/destroyItem", item: @item %>
     <% else %>
       <p>この商品は購入されました</p>
+      <% if @item.deliveryStatus==false %>
+        <%= link_to "商品を発送したことを報告する", edit_item_path(@item), class: "btn btn-primary" %>
+      <% else %>
+      <% end %>
     <% end %>
   <% else %>
     <% if @item.onSale? %>

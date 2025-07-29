@@ -1,34 +1,52 @@
-<h1 class="text-success">出品した商品の情報を修正</h1>
+<% if @item.onSale? %>
+  <h1 class="text-success">出品した商品の情報を修正</h1>
 
-<%= render 'shared/error_messages', obj: @item %>
+  <%= render 'shared/error_messages', obj: @item %>
 
-<%= form_with model: @item do |f| %>
-  <div>
-    <%= f.label :image, "商品画像" %><br>
-    <%= image_tag @item.image.url %><br>
-    <%= f.file_field :image, class:"form-control w-50" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title, class:"form-control w-25" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, "値段" %>
-    <%= f.text_field :price, class:"form-control w-25" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :category, "カテゴリー" %>
-    <%= f.select :category,options_for_select([["ファッション", "ファッション"],["ホビー", "ホビー"],["ゲーム", "ゲーム"],["本", "本"],["スポーツ", "スポーツ"]]), class:"form-select" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :introduction, "紹介文" %>
-    <%= f.text_area :introduction, class:"form-control w-50" %>
-  </div>
+  <%= form_with model: @item do |f| %>
+    <div>
+      <%= f.label :image, "商品画像" %><br>
+      <%= image_tag @item.image.url %><br>
+      <%= f.file_field :image, class:"form-control w-50" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class:"form-control w-25" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, "値段" %>
+      <%= f.text_field :price, class:"form-control w-25" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category, "カテゴリー" %>
+      <%= f.select :category,options_for_select([["ファッション", "ファッション"],["ホビー", "ホビー"],["ゲーム", "ゲーム"],["本", "本"],["スポーツ", "スポーツ"]]), class:"form-select" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :introduction, "紹介文" %>
+      <%= f.text_area :introduction, class:"form-control w-50" %>
+    </div>
 
-  <div>
-    <%= f.submit "出品情報を登録する", class:"btn btn-primary" %>
-  <div>
+    <div>
+      <%= f.submit "出品情報を登録する", class:"btn btn-primary" %>
+    <div>
+  <% end %>
+<% else %>
+  <% if @item.deliveryStatus==false %>
+    <h1 class="text-success">商品を発送したことを報告</h1>
+
+    <%= form_with model: @item do |f| %>
+      <div class="form-group">
+        <%= f.label :deliveryStatus, "発送状況" %>
+        <%= f.select :deliveryStatus, options_for_select([["発送済み", true],["未発送", false]]), class:"form-select" %>
+      </div>
+
+      <div>
+        <%= f.submit "商品の発送状況を報告する", class:"btn btn-primary" %>
+      <div>
+    <% end %>
+  <% end %>
 <% end %>
+
 
 <%= link_to "出品商品一覧へ", items_path, class:"btn btn-success" %>
   

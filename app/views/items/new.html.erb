@@ -27,6 +27,7 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :onSale, value: true %>
   <%= f.hidden_field :interest, value: 0 %>
+  <%= f.hidden_field :deliveryStatus, value: false %>
 
   <div>
     <%= f.submit "この商品を出品する", class:"btn btn-primary" %>
